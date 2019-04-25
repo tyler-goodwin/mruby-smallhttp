@@ -2,7 +2,7 @@ class HTTP
   attr_accessor :url
 
   # TODO need better regexp
-  URL_REGEXP = /^(http:\\.|https:\\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/
+  URL_REGEXP = /^http[s]?:\/\/(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+$/
   HOST_REGEXP = /^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/\n]+)/
 
   HTTP_VERSION = 'HTTP/1.1'
