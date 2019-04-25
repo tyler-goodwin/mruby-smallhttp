@@ -14,7 +14,7 @@ class Response
     @status = nil
     @response = data
 
-    if data.include?(HTTP::SEP * 2)
+    if data && data.include?(HTTP::SEP * 2)
       h_data, @body = data.split(HTTP::SEP + HTTP::SEP, 2)
     else
       h_data = data
@@ -22,12 +22,12 @@ class Response
 
     header = h_data.split(HTTP::SEP)
 
-    if header[0].include?("HTTP/1")
+    if header[0] && header[0].include?("HTTP/1")
       @status = header[0].split(" ", 3)[1].to_i
     end
 
     header.each do |l|
-      if l.include?(": ")
+      if l && l.include?(": ")
         k, v = l.split(": ")
         if !@headers[k].nil?
           if @headers[k].kind_of?(Array)
